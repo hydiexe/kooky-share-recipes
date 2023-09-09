@@ -14,11 +14,8 @@
             >
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div
-                id="navbarSupportedContent"
-                class="collapse navbar-collapse"
-            >
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div id="navbarNav" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <!-- Mengatur tautan ke halaman Beranda -->
                         <router-link to="/" class="nav-link">Home</router-link>
@@ -40,3 +37,13 @@
         </div>
     </nav>
 </template>
+
+<script>
+export default {
+
+};
+</script>
+
+<style scoped>
+/* Component-specific styles */
+</style>
