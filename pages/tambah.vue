@@ -46,10 +46,7 @@ export default {
     },
     methods: {
         addRecipe() {
-            // Implement code to add the new recipe to your data
-            // For example, you can push this.newRecipe to your recipes array
             this.recipes.push(this.newRecipe);
-            // Then reset the form or perform any other necessary actions
             this.newRecipe = {
                 title: '',
                 ingredients: '',

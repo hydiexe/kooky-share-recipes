@@ -9,12 +9,15 @@
     </nav>
 </template>
 
-<script>
-export default {
-    
-};
-</script>
-
 <style scoped>
-/* Component-specific styles */
+.navbar {
+  background-color: #abb9ac; 
+}
+
+.navbar-text {
+  font-size: 18px;
+  color: #15323f; 
+  text-align: center; 
+  padding: 10px 0; 
+}
 </style>

@@ -2,6 +2,7 @@
 <template>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container">
+            <router-link to="/" class="navbar-brand">Kooky</router-link>
             
             <button
                 class="navbar-toggler"
@@ -38,12 +39,23 @@
     </nav>
 </template>
 
-<script>
-export default {
-
-};
-</script>
-
 <style scoped>
-/* Component-specific styles */
+.navbar {
+    background-color: #abb9ac;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    color: #15323f;
+}
+
+.nav-link {
+    color: #15323f !important;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.nav-link:hover {
+    color: #117e81 !important;
+}
 </style>
