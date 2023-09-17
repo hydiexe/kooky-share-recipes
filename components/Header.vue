@@ -39,7 +39,8 @@
     </nav>
 </template>
 
-<style scoped>
+<style lang="css" scoped>
+@import 'bootstrap/dist/css/bootstrap.min.css';
 .navbar {
     background-color: #abb9ac;
 }
