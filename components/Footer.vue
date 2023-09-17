@@ -6,6 +6,11 @@
                 &copy; 2023 hydie. All right reserved
             </span>
         </div>
+        <div>
+				<a class="button" href="https://github.com/hydiexe" target="_blank">
+					Github
+				</a>
+			</div>
     </nav>
 </template>
 
