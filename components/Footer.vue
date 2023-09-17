@@ -17,7 +17,7 @@
 <style lang="css" scoped>
 @import 'bootstrap/dist/css/bootstrap.min.css';
 .navbar {
-  background-color: #abb9ac; 
+  background-color: #5e9ba3; 
 }
 
 .navbar-text {

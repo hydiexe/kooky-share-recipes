@@ -42,6 +42,7 @@ export default {
                 instructions: '',
                 category: 'makanan', // Default category
             },
+            recipes: [],
         };
     },
     methods: {
