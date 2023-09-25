@@ -6,6 +6,21 @@
         <h5>Kooky, an international kitchen</h5>
       </div>
 
+      <div class="search-bar">
+        <input v-model="searchQuery" type="text" placeholder="Cari..." @input="performSearch">
+        <button @click="performSearch">Cari</button>
+      </div>
+
+      <div class="list-task">
+        <div v-for="recipe in filteredRecipes" :key="recipe.id" class="item-task d-flex align-items-center border-bottom pt-3 pb-4">
+          <div class="title-task">{{ recipe.title }}</div>
+        </div>
+      </div>
+
+      <div v-if="filteredRecipes.length === 0 && searched" class="no-results">
+        Tidak ada hasil yang ditemukan.
+      </div>
+      
       <div class="action py-2">
         <router-link to="/tambah" class="add-button">Add Recipe</router-link>
       </div>
@@ -20,13 +35,6 @@
         </select>
       </div>
       
-      <div class="list-task">
-        <!-- Loop through filtered recipes -->
-        <div v-for="recipe in filteredRecipes" :key="recipe.id" class="item-task d-flex align-items-center border-bottom pt-3 pb-4">
-          <div class="title-task">{{ recipe.title }}</div>
-        </div>
-      </div>
-      
     </div>
   </div>
 </template>
@@ -36,25 +44,54 @@
 
   export default {
     name: 'Beranda',
+    computed: {
+      ...mapState(['recipes']),
 
+      filteredRecipes() {
+        let filtered = this.recipes; 
+
+        if (this.selectedCategory !== 'all') {
+          filtered = filtered.filter(recipe => recipe.category === this.selectedCategory);
+        }
+
+        if (this.searched) {
+          const query = this.searchQuery.toLowerCase().trim();
+          filtered = filtered.filter(recipe => 
+            recipe.title.toLowerCase().includes(query) ||
+            recipe.ingredients.toLowerCase().includes(query) ||
+            recipe.instructions.toLowerCase().includes(query)
+          );
+        }
+
+        return filtered;
+      },
+    },
+
+    // eslint-disable-next-line vue/order-in-components
     data() {
       return {
-        selectedCategory: 'all', 
+        selectedCategory: 'all',
+        searchQuery: '', 
+        searched: false,
       };
     },
 
-    computed: {
-    ...mapState(['recipes']),
+    methods: {
+      updateSearchQuery() {
+        this.searched = false;
+      },
 
-      filteredRecipes() {
-        if (this.selectedCategory === 'all') {
-          return this.recipes; // Mengambil data resep dari Vuex store
-        } else {
-          return this.recipes.filter(recipe => recipe.category === this.selectedCategory);
-        }
+      performSearch() {
+        this.searched = true;
       },
     },
   };
 </script>
 
-<style></style>
+<style>
+.no-results {
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+}
+</style>
