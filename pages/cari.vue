@@ -24,33 +24,26 @@
       return {
         searchQuery: '', // Menyimpan kata kunci pencarian pengguna
         recipes: [
-          // Data resep Anda di sini
         ],
       };
     },
     computed: {
       filteredRecipes() {
-        const query = this.searchQuery.toLowerCase();
-        return this.recipes.filter(recipe => {
-          return (
-            recipe.title.toLowerCase().includes(query) ||
-            recipe.ingredients.toLowerCase().includes(query) ||
-            recipe.instructions.toLowerCase().includes(query)
-          );
-        });
+        if (this.selectedCategory === 'all') {
+          return this.$store.state.recipes; // Mengambil data resep dari Vuex store
+        } else {
+          return this.$store.state.recipes.filter(recipe => recipe.category === this.selectedCategory);
+        }
       },
     },
     methods: {
       performSearch() {
-        // Metode ini akan dipanggil saat pengguna mengklik tombol "Cari"
-        // Anda juga dapat memanggilnya saat query pencarian berubah (misalnya, saat mengetik)
-        // Fungsionalitas pencarian diimplementasikan dalam computed property "filteredRecipes"
       },
     },
   };
   </script>
   
   <style>
-  /* Tambahkan gaya khusus untuk komponen ini jika diperlukan */
+  
   </style>
   

@@ -47,7 +47,15 @@ export default {
     },
     methods: {
         addRecipe() {
-            this.recipes.push(this.newRecipe);
+            const newRecipe = {
+                title: this.newRecipe.title,
+                ingredients: this.newRecipe.ingredients,
+                instructions: this.newRecipe.instructions,
+                category: this.newRecipe.category,
+            };
+
+            this.$store.commit('addRecipe', newRecipe);
+
             this.newRecipe = {
                 title: '',
                 ingredients: '',
